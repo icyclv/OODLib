@@ -3,10 +3,11 @@ from torch.utils.data import Dataset
 
 class BaseDataset(Dataset):
 
-    def __init__(self, root: str):
+    def __init__(self, root):
         super().__init__()
         self.root = root
         self.dataset = None
+        self.class_names = None
 
     def __len__(self):
         if self.dataset is None:

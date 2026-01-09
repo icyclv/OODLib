@@ -1,7 +1,4 @@
 from .registry import register_dataset, get_dataset, list_datasets
 
-from .cifar10 import CIFAR10
-
-__all__ = [
-    "cifar10",
-]
+from .id_datasets import *
+from .ood_datasets import *
