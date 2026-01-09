@@ -10,7 +10,7 @@ from torchvision import transforms
 @register_dataset("cifar100")
 class CIFAR100(BaseDataset):
     
-    def __init__(self, root, split):
+    def __init__(self, root="./data"):
         super().__init__(root)
         self.train_transform = transforms.Compose([
             transforms.RandomCrop(32, padding=4),
