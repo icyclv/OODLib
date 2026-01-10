@@ -1,4 +1,4 @@
-from .resnet import ResNet
+import models.dnns.resnet.model
 
 __all__ = [
     "resnet",
