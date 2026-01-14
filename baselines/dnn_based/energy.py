@@ -8,14 +8,12 @@ from tqdm import tqdm
 
 @register_baseline("energy")
 class Energy(BaseBaseline):
-    def __init__(self, model, args):
-        self.model = model
-        self.device = args.device
-
-        self.T = 1
 
     @torch.no_grad()
     def eval(self, data_loader):
+
+        T = 1
+
         self.model.eval()
         result = []
         
@@ -23,7 +21,7 @@ class Energy(BaseBaseline):
             images = images.to(self.device)
             output = self.model.get_output(images)
 
-            energy = self.T * torch.logsumexp(output / self.T, dim=1).data.cpu().numpy()
+            energy = T * torch.logsumexp(output / T, dim=1).data.cpu().numpy()
             result.append(energy)
 
         return np.concatenate(result)
