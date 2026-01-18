@@ -29,6 +29,7 @@ class Identity(nn.Module):
     def forward(self, input):
         return input + 0.0
 
+
 class BasicBlock(nn.Module):
     expansion = 1
 
@@ -63,7 +64,6 @@ class BasicBlock(nn.Module):
         return out
 
  
-
 class Bottleneck(nn.Module):
     expansion = 4
 
@@ -160,13 +160,8 @@ class AbstractResNet(nn.Module):
     
     def get_feature(self, x):
         x = self.features(x)
-        x = self.avgpool(x)
-        x = x.view(x.size(0), -1)
-        feature = x
-        x = self.fc(x)
-        return x,feature
-
-
+        feature = self.avgpool(x)
+        return feature
 
     
     def load_state_dict(self, state_dict, strict=True):

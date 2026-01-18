@@ -9,6 +9,7 @@ class ResNet(BaseModel):
     def __init__(self, num_classes, device):
         super().__init__(num_classes, device)
         self.model = resnet50(num_classes=num_classes, pretrained=True).to(device)
+        self.linear = self.model.fc
 
     def eval(self):
         self.model.eval()
@@ -17,4 +18,4 @@ class ResNet(BaseModel):
         return self.model(x)
     
     def get_feature(self, x):
-        pass
+        return self.model.get_feature(x)
