@@ -1,7 +1,6 @@
 from baselines.base import BaseBaseline
 from baselines.registry import register_baseline
 
-import torch.nn.functional as F
 import torch
 import numpy as np
 from tqdm import tqdm
